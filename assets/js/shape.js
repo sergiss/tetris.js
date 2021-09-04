@@ -22,7 +22,7 @@ class Shape {
 				b = (i << 2) + j;
 				if ((0x1 & d >>> b) == 1) {
 					y = j + this.y;
-					ctx.fillRect(x * TILE_SIZE + (x << 1) + 1, y * TILE_SIZE + (y << 1) + 1, TILE_SIZE, TILE_SIZE);
+					ctx.fillRect(x * TILE_SIZE + (x << 2) + 2, y * TILE_SIZE + (y << 2) + 2, TILE_SIZE, TILE_SIZE);
 				}
 			}
 		}

@@ -1,7 +1,8 @@
 
 :root {
 	--shadow_color: #00000066;
-  }
+}
+
 body {
 
 	font-family: monospace, Arial, Helvetica, sans-serif;
@@ -17,17 +18,17 @@ body {
 	text-align: center;
 	overflow: hidden;
 	
-    background-color: #4e6679;
+    background-color: #beb4c5;
 }
 
 .title {
 	display: inline-block;
 	margin: 0px;
-	color: #111;
+	color: #1a1a1a;
+	font-size: bold;
 }
 
-#container {
-	
+#container {	
 	display: inline-block;
 	width: calc((100vh - 85px) * 0.47);
 	height: auto;
@@ -39,10 +40,22 @@ a {
 }
 
 canvas {
-		border-radius: 15px;
+	border-radius: 15px;
 }
 
 .shadow {
 	-webkit-filter: drop-shadow(3px 2px 1px var(--shadow_color));
 	filter: drop-shadow(3px 2px 1px var(--shadow_color));
 }
+/*
+.instructions {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+	background-color: lightgray;
+	padding: 10px 20px 0px 20px;
+	border-radius: 10px;
+	opacity: 0.75;
+}*/

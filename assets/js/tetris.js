@@ -2,7 +2,7 @@
  * 2020 Sergio Soriano - sergiosoriano.com
  */
 
-var SHAPES = [
+const SHAPES = [
     [ 1632                   ],
     [ 8738, 3840, 17476, 240 ],
     [ 610 ,  114,   562, 624 ],
@@ -12,10 +12,10 @@ var SHAPES = [
     [ 306 , 1584,   612,  99 ]
 ];
 
-var COLORS = [ "#111", "#00a300", "#9f00a7", "#603cba", "#ffc40d", "#ee1111", "#99b433", "#ff0097"];
+const COLORS = [ "#111", "#00a300", "#9f00a7", "#603cba", "#ffc40d", "#ee1111", "#99b433", "#ff0097"];
 
-var dw = 180;
-var dh = 380;
+var dw = 360;
+var dh = 760;
 
 class Tetris extends Loop {
 
@@ -44,7 +44,6 @@ class Tetris extends Loop {
         let resize = function() {
         	self.canvas.width  = dw;
         	self.canvas.height = dh;
-        	self.canvas.getContext("2d");
         }      
         window.onresize = resize;
         resize();
@@ -121,8 +120,7 @@ class Tetris extends Loop {
 			this.currentShape.x = 3;
 			this.time = 0;
 			
-			if (!this.currentShape.canMove(this.currentShape.x, this.currentShape.y)) {
-                // GAME OVER
+			if (!this.currentShape.canMove(this.currentShape.x, this.currentShape.y)) { // GAME OVER
                 this.gameOver = true;
                 return;
 			}
@@ -166,22 +164,25 @@ class Tetris extends Loop {
     }
 
     render = function(ctx) {
-
     	
         ctx.fillStyle = "#040404"; // black
 		ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 		
         this.grid.render(ctx);
         if(this.currentShape != null) this.currentShape.render(ctx);
-		ctx.font = '10px sans-serif';
+		ctx.font = '20px sans-serif';
 		ctx.fillStyle = "#808080"; // gray
-		ctx.fillText("Score: " + this.score, 5, dh - 8);
-		ctx.fillText("Level: " + this.level, dw - 45, dh - 8);
+		ctx.fillText("Score: " + this.score, 10, dh - 15);
+		ctx.fillText("Level: " + this.level, dw - 80, dh - 15);
 
-        if(this.gameOver) {                   
-            ctx.fillText("Press Space", dw * 0.5 - 28, dh * 0.5 + 15);
-            ctx.font = 'bold 15px sans-serif';
-            ctx.fillText("GAME OVER", dw * 0.5 - 44, dh * 0.5);
+        if(this.gameOver) {   
+            let text = "Press Space";
+            let dimensions = ctx.measureText(text);             
+            ctx.fillText(text, dw * 0.5 - dimensions.width * 0.5, dh * 0.5 + 30);
+            ctx.font = 'bold 25px sans-serif';
+            text = "GAME OVER";
+            dimensions = ctx.measureText(text);
+            ctx.fillText(text, dw * 0.5 - dimensions.width * 0.5, dh * 0.5);
         }
 
     } 

@@ -2,7 +2,7 @@
  * 2020 Sergio Soriano - sergiosoriano.com
  */
 
-const TILE_SIZE = 16;
+const TILE_SIZE = 32;
 class Grid {
 
     constructor(cols, rows) {
@@ -20,7 +20,7 @@ class Grid {
         for(i = 0; i < this.cols; ++i) {
 			for(j = 0; j < this.rows; ++j) {
 				ctx.fillStyle = COLORS[this.data[i * this.rows + j]];
-				ctx.fillRect(i * TILE_SIZE + (i << 1) + 1, j * TILE_SIZE + (j << 1) + 1, TILE_SIZE, TILE_SIZE);
+				ctx.fillRect(i * TILE_SIZE + (i << 2) + 2, j * TILE_SIZE + (j << 2) + 2, TILE_SIZE, TILE_SIZE);
 			}
 		}
     }

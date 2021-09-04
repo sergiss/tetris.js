@@ -1,5 +1,5 @@
 /**
- * 2020 Sergio Soriano - sergiosoriano.com
+ * 2021 Sergio Soriano - sergiosoriano.com
  */
 
 const SHAPES = [
@@ -61,12 +61,13 @@ class Tetris extends Loop {
 
         let code = e.keyCode;
         let down = e.type == "keydown";
-
+        let prevent = false;
         switch(code) {
             case 32:
                 if(this.gameOver && !down) {
                     this.restart();
                 }
+                prevent = true;
                 break;
             case 37:
                 if(down && this.keyLeft.isReleased()) {
@@ -74,6 +75,7 @@ class Tetris extends Loop {
                 } else if(!down) {
                     this.keyLeft.setState(RELEASED);
                 }
+                prevent = true;
                 break;
             case 39:
                 if(down && this.keyRight.isReleased()) {
@@ -81,6 +83,7 @@ class Tetris extends Loop {
                 } else if(!down) {
                     this.keyRight.setState(RELEASED);
                 }
+                prevent = true;
                 break;
             case 40:
                 if(down && this.keyDown.isReleased()) {
@@ -88,6 +91,7 @@ class Tetris extends Loop {
                 } else if(!down) {
                     this.keyDown.setState(RELEASED);
                 }
+                prevent = true;
                 break;
             case 38:
                 if(down && this.keyUp.isReleased()) {
@@ -95,8 +99,10 @@ class Tetris extends Loop {
                 } else if(!down) {
                     this.keyUp.setState(RELEASED);
                 }
+                prevent = true;
                 break;
         }
+        if(prevent) e.preventDefault();
     }
 
     update = function(deltaTime) {

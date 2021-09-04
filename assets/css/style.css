@@ -1,0 +1,48 @@
+
+:root {
+	--shadow_color: #00000066;
+  }
+body {
+
+	font-family: monospace, Arial, Helvetica, sans-serif;
+
+	height: 100%;
+	width: 100%;
+	margin: 0px;
+	padding: 5px;
+	box-sizing: border-box;
+
+	display: grid;
+	grid-template-rows: 40px 1fr 25px;
+	text-align: center;
+	overflow: hidden;
+	
+    background-color: #4e6679;
+}
+
+.title {
+	display: inline-block;
+	margin: 0px;
+	color: #111;
+}
+
+#container {
+	
+	display: inline-block;
+	width: calc((100vh - 85px) * 0.47);
+	height: auto;
+}
+
+a {
+	text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+canvas {
+		border-radius: 15px;
+}
+
+.shadow {
+	-webkit-filter: drop-shadow(3px 2px 1px var(--shadow_color));
+	filter: drop-shadow(3px 2px 1px var(--shadow_color));
+}
